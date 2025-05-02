@@ -11,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example1.demo.Repository.CashRepository;
 import com.example1.demo.entity.Cash;
 
-
 import lombok.AllArgsConstructor;
 
 
@@ -26,6 +25,13 @@ public class CashController {
         mv.setViewName("cashList");
         List<Cash> cashList = cashRepository.findAll();
         mv.addObject("cashList", cashList);
+        return mv;
+    }
+
+    @GetMapping("/cash/new")
+    public ModelAndView showNewCashForm(ModelAndView mv) {
+        mv.setViewName("cashForm");
+        mv.addObject("cash", new Cash());
         return mv;
     }
 }

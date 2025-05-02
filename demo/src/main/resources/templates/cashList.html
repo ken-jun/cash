@@ -5,15 +5,19 @@
     <title>支出計算</title>
 </head>
 <body>
+<a href="/cash/new">
+ <buttun type=bottun>新規登録</bottun>
+</a>
+
 <table border="1">
     <tr>
     <th>収入</th>
-    <th>合計</th>
+    <th>カテゴリー</th>
     <th>日付</th>
     </tr>
     <tr th:each="cash : ${cashList}">
         <td th:text="${cash.income}"></td>
-        <td th:text="${cash.amount}"></td>
+        <td th:text="${cash.category}"></td>
         <td th:text="${cash.date}"></td>
     </tr>
 </table>

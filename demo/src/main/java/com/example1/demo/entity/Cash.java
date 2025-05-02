@@ -1,5 +1,6 @@
 package com.example1.demo.entity;
 
+
 import java.sql.Date;
 
 import jakarta.persistence.Column;
@@ -20,10 +21,10 @@ public class Cash {
     private int id;
 
     @Column(name = "income")
-    private int income;
+    private String income;
 
-    @Column(name = "amount")
-    private int amount;
+    @Column(name = "category")
+    private String category;
     
     @Column(name = "date")
     private Date date;
