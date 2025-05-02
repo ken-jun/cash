@@ -1,13 +1,27 @@
-<html th:tymeleaf="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>支出計算</title>
 </head>
 <body>
-<form action="/cash/new" method="post">
-    <input type="text" name="income">
-    <input type="text" name="amount">
-    <input type="date" name="date">
-    <button type="submit">登録</button>
+<form action="/" th:object="${cashData}" method="post">
+    <table>
+        <tr>
+            <th>収入</th>
+            <td><input type="text" th:field="*{income}" placeholder="入力してください"></td>
+        </tr> 
+        <tr>
+            <th>カテゴリー</th>
+            <td><input type="text" th:field="*{category}" placeholder="入力してください"></td>
+        </tr>
+        <tr>
+            <th>日付</th>
+            <td><input type="date" th:field="*{date}"></td>
+        </tr>
+    </table>
+    <div>
+        <button type="submit" th:formaction="@{/cash/new}">登録</button>
+    </div>
 </form>
 </body>
 </html>
