@@ -21,7 +21,7 @@ public class Cash {
     private int id;
 
     @Column(name = "income")
-    private String income;
+    private Integer income;
 
     @Column(name = "category")
     private String category;

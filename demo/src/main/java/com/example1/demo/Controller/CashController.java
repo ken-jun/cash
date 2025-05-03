@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +15,7 @@ import com.example1.demo.CashForm.CashForm;
 import com.example1.demo.Repository.CashRepository;
 import com.example1.demo.entity.Cash;
 
-import jakarta.validation.Valid;
+
 import lombok.AllArgsConstructor;
 
 
@@ -40,15 +41,11 @@ public class CashController {
     }
 
    @PostMapping("/cash/new")
-public String addNewCash(@ModelAttribute @Valid CashForm cashData, BindingResult result) {
-    if (result.hasErrors()) {
-        return "cashForm"; 
+public String addNewCash(@ModelAttribute @Validated CashForm cashData, BindingResult result) {
+    if(!result.hasErrors()) {
+        Cash cash = cashData.toEntity();
+        cashRepository.save(cash);
     }
-    Cash cash = new Cash();
-    cash.setIncome(cashData.getIncome());
-    cash.setCategory(cashData.getCategory());
-    cash.setDate(cashData.getDate());
-    cashRepository.save(cash);
     return "redirect:/";
 }
 
