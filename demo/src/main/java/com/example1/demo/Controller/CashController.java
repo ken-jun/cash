@@ -49,4 +49,8 @@ public String addNewCash(@ModelAttribute @Validated CashForm cashData, BindingRe
     return "redirect:/";
 }
 
+@PostMapping("/cash/cancel")
+public String deleteCash() {
+   return "redirect:/";
+}
 }
