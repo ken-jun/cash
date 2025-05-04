@@ -15,7 +15,7 @@ import com.example1.demo.CashForm.CashForm;
 import com.example1.demo.Repository.CashRepository;
 import com.example1.demo.entity.Cash;
 
-
+import ch.qos.logback.core.model.Model;
 import lombok.AllArgsConstructor;
 
 
@@ -53,4 +53,11 @@ public String addNewCash(@ModelAttribute @Validated CashForm cashData, BindingRe
 public String deleteCash() {
    return "redirect:/";
 }
+
+@PostMapping("/cash/{id}")
+public String showCashEdit() {
+   return "redirect:/cash/new";
+} 
+    
+
 }

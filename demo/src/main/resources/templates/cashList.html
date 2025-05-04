@@ -19,6 +19,11 @@
         <td th:text="${cash.income}"></td>
         <td th:text="${cash.category}"></td>
         <td th:text="${cash.date}"></td>
+        <td >
+            <form th:action="@{/cash/{id}(id=${cash.id})}" method="post">
+                <button type="submit">編集</button>
+            </form>
+        </td>
     </tr>
 </table>
 </body>
