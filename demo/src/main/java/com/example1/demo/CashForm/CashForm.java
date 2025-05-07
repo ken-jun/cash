@@ -24,6 +24,7 @@ public class CashForm {
 
     public Cash toEntity() {
         Cash cash = new Cash();
+        cash.setId(id);
         cash.setIncome(income);
         cash.setCategory(category);
         cash.setDate(date);

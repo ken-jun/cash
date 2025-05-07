@@ -7,6 +7,12 @@
 <form action="/" th:object="${cashData}" method="post">
     <table>
         <tr>
+            <td>
+                <span th:text="*{id}"></span>
+                <input type="hidden" th:field="*{id}">
+            </td>
+        </tr>
+        <tr>
             <th>収入</th>
             <td><input type="text" th:field="*{income}" placeholder="入力してください"></td>
         </tr> 
@@ -19,7 +25,12 @@
             <td><input type="date" th:field="*{date}"></td>
         </tr>
     </table>
-    <div>
+    <div th:if="${session.mode == 'update'}">
+        <button type="submit" th:formaction="@{/cash/update}">更新</button>
+        <button type="submit" th:formaction="@{/cash/delete}">削除</button>
+        <button type="submit" th:formaction="@{/cash/cancel}">キャンセル</button>
+    </div>
+    <div th:if="${session.mode == 'create'}">
         <button type="submit" th:formaction="@{/cash/new}">登録</button>
         <button type="submit" th:formaction="@{/cash/cancel}">キャンセル</button>
     </div>
