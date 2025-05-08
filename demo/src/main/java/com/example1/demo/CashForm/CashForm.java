@@ -14,7 +14,7 @@ import lombok.Data;
 public class CashForm {
     private Integer id;
 
-    @NotNull
+    @NotNull(message="入力してください")
     private Integer income;
 
     @NotBlank(message="入力してください")
