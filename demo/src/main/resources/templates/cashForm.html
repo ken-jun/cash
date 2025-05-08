@@ -2,9 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>支出計算</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<form action="/" th:object="${cashData}" method="post">
+<form th:object="${cashData}" method="post">
     <table>
         <tr>
             <td>
@@ -14,15 +16,23 @@
         </tr>
         <tr>
             <th>収入</th>
-            <td><input type="text" th:field="*{income}" placeholder="入力してください"></td>
+            <td>
+            <input type="text" th:field="*{income}" >
+            <div th:if="${#fields.hasErrors('income')}" th:errors="*{income}" class="error-message">入力してください</div>
+            </td>
         </tr> 
         <tr>
             <th>カテゴリー</th>
-            <td><input type="text" th:field="*{category}" placeholder="入力してください"></td>
+            <td>
+            <input type="text" th:field="*{category}" >
+            <div th:if="${#fields.hasErrors('category')}" th:errors="*{category}" class="error-message">入力してください</div>
+            </td>
         </tr>
         <tr>
             <th>日付</th>
-            <td><input type="date" th:field="*{date}"></td>
+            <td>
+            <input type="date" th:field="*{date}">
+            </td>
         </tr>
     </table>
     <div th:if="${session.mode == 'update'}">

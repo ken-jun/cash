@@ -47,12 +47,15 @@ public class CashController {
     }
 
    @PostMapping("/cash/new")
-public String addNewCash(@ModelAttribute @Validated CashForm cashData, BindingResult result) {
+public String addNewCash(@ModelAttribute("cashData") @Validated CashForm cashData, BindingResult result, Model mv) {
     if(!result.hasErrors()) {
         Cash cash = cashData.toEntity();
         cashRepository.save(cash);
+        return "redirect:/";
+    } else {
+        mv.addAttribute("cashData", cashData);
+        return "cashForm";
     }
-    return "redirect:/";
 }
 
 @PostMapping("/cash/cancel")
@@ -71,12 +74,13 @@ public ModelAndView showCashEdit(@PathVariable int id, ModelAndView mv) {
 } 
 //更新処理
 @PostMapping("/cash/update")
-public String updateCash(@ModelAttribute @Validated CashForm cashData, BindingResult result, Model mv) {
+public String updateCash(@ModelAttribute("cashData") @Validated CashForm cashData, BindingResult result, Model model) {
     if(!result.hasErrors()) {
         Cash cash = cashData.toEntity();
         cashRepository.save(cash);
         return "redirect:/";
     } else {
+        model.addAttribute("cashData", cashData);
         return "cashForm";
     }
    
@@ -86,9 +90,6 @@ public String updateCash(@ModelAttribute @Validated CashForm cashData, BindingRe
 public String deleteCash(@ModelAttribute CashForm cashData) {
     cashRepository.deleteById(cashData.getId());
     return "redirect:/";
-
-    
-
 }
 
 }

@@ -18,7 +18,7 @@ public class Cash {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name = "income")
     private Integer income;
