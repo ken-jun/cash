@@ -28,30 +28,8 @@
 </div>
 </div>
 </nav>
-<div style="margin-top: 88px">
-<table class="table table-bordered table-striped">
-    <thead class="table-dark">
-    <tr>
-    <th>支出</th>
-    <th>カテゴリー</th>
-    <th>日付</th>
-    <th>操作</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="cash : ${cashList}">
-        <td th:text="${cash.income}"></td>
-        <td th:text="${cash.category}"></td>
-        <td th:text="${cash.date}"></td>
-        <td >
-            <form th:action="@{/cash/{id}(id=${cash.id})}" method="post">
-                <button type="submit">編集</button>
-            </form>
-        </td>
-    </tr>
-    </tbody>
-</table>
-</div>
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
