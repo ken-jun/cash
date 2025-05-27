@@ -1,49 +1,71 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>支出計算</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 </head>
 <body>
+<nav class="navbar navbar-expand-lg bg-info fixed-top py-4" data-bs-theme="dark" id="navbar">
+    <div class="container">
+        <a class="navbar-brand text-dark" th:href="@{/cash/home}">
+        <i class="bi bi-bank"></i>
+            支出計算
+        </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+            <a class="nav-link text-dark" th:href="@{/}">支出一覧</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" th:href="@{/cash/new}">支出登録</a>
+        </li>
+    </ul>
+</div>
+</div>
+</nav>
+<div style="margin-top: 88px;">
+<div class="container">
 <form th:object="${cashData}" method="post">
-    <table>
-        <tr>
-            <td>
-                <span th:text="*{id}"></span>
-                <input type="hidden" th:field="*{id}">
-            </td>
-        </tr>
-        <tr>
-            <th>収入</th>
-            <td>
-            <input type="text" th:field="*{income}" >
-            <div th:if="${#fields.hasErrors('income')}" th:errors="*{income}" class="error-message">入力してください</div>
-            </td>
-        </tr> 
-        <tr>
-            <th>カテゴリー</th>
-            <td>
-            <input type="text" th:field="*{category}" >
-            <div th:if="${#fields.hasErrors('category')}" th:errors="*{category}" class="error-message">入力してください</div>
-            </td>
-        </tr>
-        <tr>
-            <th>日付</th>
-            <td>
-            <input type="date" th:field="*{date}">
-            </td>
-        </tr>
-    </table>
-    <div th:if="${session.mode == 'update'}">
-        <button type="submit" th:formaction="@{/cash/update}">更新</button>
-        <button type="submit" th:formaction="@{/cash/delete}">削除</button>
-        <button type="submit" th:formaction="@{/cash/cancel}">キャンセル</button>
+    <div class="mb-3">
+    <label for="id" class="form-label"></label>
+    <input type="hidden" th:field="*{id}" id="id">
+    </div>
+    <div class="mb-3">
+    <label for="income" class="form-label">支出</label>
+    <input type="text" th:field="*{income}" id="income" class="form-control">
+    <div th:if="${#fields.hasErrors('income')}" th:errors="*{income}" class="error-message" style="color: red;">入力してください</div>
+    </div>
+    <div class="mb-3">
+    <label for="category" class="form-label">カテゴリー</label>
+    <input type="text" th:field="*{category}" id="category" class="form-control">
+    <div th:if="${#fields.hasErrors('category')}" th:errors="*{category}" class="error-message" style="color: red;">入力してください</div>
+    </div>
+    <div class="mb-3">
+    <label for="date" class="form-label">日付</label>
+    <input type="date" th:field="*{date}" id="date" class="form-control">
+    </div>
+    <div th:if="${session.mode == 'update'}" class="mb-3">
+        <button type="submit" th:formaction="@{/cash/update}" class="btn btn-primary">更新</button>
+        <button type="submit" th:formaction="@{/cash/delete}" class="btn btn-danger">削除</button>
+        <button type="submit" th:formaction="@{/cash/cancel}" class="btn btn-secondary">キャンセル</button>
     </div>
     <div th:if="${session.mode == 'create'}">
-        <button type="submit" th:formaction="@{/cash/new}">登録</button>
-        <button type="submit" th:formaction="@{/cash/cancel}">キャンセル</button>
+        <button type="submit" th:formaction="@{/cash/new}" class="btn btn-primary">登録</button>
+        <button type="submit" th:formaction="@{/cash/cancel}" class="btn btn-secondary">キャンセル</button>
     </div>
 </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+
+
+
+
