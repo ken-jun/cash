@@ -92,9 +92,4 @@ public String deleteCash(@ModelAttribute CashForm cashData) {
     return "redirect:/";
 }
 
-@GetMapping("/cash/home")
-public String home() {
-    return "cashHome";
-
-}
 }
