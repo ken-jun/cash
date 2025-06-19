@@ -92,4 +92,9 @@ public String deleteCash(@ModelAttribute CashForm cashData) {
     return "redirect:/";
 }
 
+@GetMapping("/cash/result")
+public String showCashResult(Model model) {
+    model.addAttribute("cashSum", cashRepository.getTotalIncome());
+    return "cashSum";
+}
 }

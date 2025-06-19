@@ -28,43 +28,13 @@
 </div>
 </div>
 </nav>
-
-<section class="py-1 bg-info text-center">
-<div class="container text-center" style="margin-top: 88px;">
-    <div class="row">
-        <div class="col">
-            <p>お金を貯めましょう</p>
-            <h2 class="mb-3">今月の支出合計を確認する</h2>
-            <a href="/cash/result" class="btn btn-dark px-5 shadow">支出計算</a>
+<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+        <div class="text-center">
+            <h1 class="display-3 fw-bold text-primary">
+                合計支出：<span th:text="${cashSum}"></span> 円
+            </h1>
         </div>
     </div>
-</div>
-</section>
-
-<div style="margin-top: 30px;">
-<table class="table table-bordered table-striped">
-    <thead class="table-dark">
-    <tr>
-    <th>支出</th>
-    <th>カテゴリー</th>
-    <th>日付</th>
-    <th>操作</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="cash : ${cashList}">
-        <td th:text="${cash.income}"></td>
-        <td th:text="${cash.category}"></td>
-        <td th:text="${cash.date}"></td>
-        <td >
-            <form th:action="@{/cash/{id}(id=${cash.id})}" method="post">
-                <button type="submit">編集</button>
-            </form>
-        </td>
-    </tr>
-    </tbody>
-</table>
-</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
