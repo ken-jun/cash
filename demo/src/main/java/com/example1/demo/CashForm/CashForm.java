@@ -15,7 +15,7 @@ public class CashForm {
     private Integer id;
 
     @NotNull(message="入力してください")
-    private Integer income;
+    private Integer expense;
 
     @NotBlank(message="入力してください")
     private String category;
@@ -25,7 +25,7 @@ public class CashForm {
     public Cash toEntity() {
         Cash cash = new Cash();
         cash.setId(id);
-        cash.setIncome(income);
+        cash.setExpense(expense);
         cash.setCategory(category);
         cash.setDate(date);
         return cash;

@@ -20,8 +20,8 @@ public class Cash {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "income")
-    private Integer income;
+    @Column(name = "expense")
+    private Integer expense;
 
     @Column(name = "category")
     private String category;

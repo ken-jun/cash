@@ -38,8 +38,8 @@
     </div>
     <div class="mb-3">
     <label for="income" class="form-label">支出</label>
-    <input type="text" th:field="*{income}" id="income" class="form-control">
-    <div th:if="${#fields.hasErrors('income')}" th:errors="*{income}" class="error-message" style="color: red;">入力してください</div>
+    <input type="text" th:field="*{expense}" id="expense" class="form-control">
+    <div th:if="${#fields.hasErrors('expense')}" th:errors="*{expense}" class="error-message" style="color: red;">入力してください</div>
     </div>
     <div class="mb-3">
     <label for="category" class="form-label">カテゴリー</label>

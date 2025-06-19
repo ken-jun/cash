@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 import com.example1.demo.entity.Cash;
 @Repository
 public interface CashRepository extends JpaRepository<Cash, Integer> {
-    @Query("SELECT SUM(c.income) FROM Cash c")
-    Integer getTotalIncome();
+    @Query("SELECT SUM(c.expense) FROM Cash c")
+    Integer getTotalExpense();
 }
